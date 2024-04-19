@@ -1,42 +1,37 @@
-class _Node {
-    constructor(value) {
-      this.value = value;
-      this.next = null;
-    }
+const Node = require("./node");
+
+class Queue {
+  constructor() {
+    this.first = null;
+    this.last = null;
   }
-  
-  class Queue {
-    constructor() {
-      this.first = null;
-      this.last = null;
+
+  enqueue(value) {
+    const newNode = new Node(value);
+
+    if (this.first) {
+      this.last.next = newNode;
+    } else {
+      // Set the node of the queue's next to be the new node
+      this.first = newNode;
     }
-  
-    enqueue(data) {
-      const node = new _Node(data);
-  
-      if (this.first === null) {
-        this.first = node;
-      }
-  
-      if (this.last) {
-        this.last.next = node;
-      }
-      this.last = node;
-    }
-  
-    dequeue() {
-      //if the queue is empty, there is nothing to return
-      if (this.first === null) {
-        return;
-      }
-      const node = this.first;
-      this.first = this.first.next;
-      //if this is the last item in the queue
-      if (node === this.last) {
+
+    //make the new node the last item on the queue
+    this.last = newNode;
+  }
+
+  dequeue() {
+    if (this.first) {
+      const dequeued = this.first;
+      this.first = dequeued.next;
+
+      if (dequeued === this.last) {
         this.last = null;
       }
-      return node.value;
+
+      return dequeued.value;
     }
   }
-  
-  module.exports = Queue;
+}
+
+module.exports = Queue;
