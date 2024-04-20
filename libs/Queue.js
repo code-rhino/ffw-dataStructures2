@@ -32,6 +32,14 @@ class Queue {
       return dequeued.value;
     }
   }
+
+  peek() {
+    return this.first ? this.first.value : null;
+  }
+
+  isEmpty() {
+    return this.first === null;
+  }
 }
 
 module.exports = Queue;

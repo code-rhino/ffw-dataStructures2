@@ -1,5 +1,4 @@
 # Queue
-
 [Video](https://vimeo.com/936812742/800d4d7b69?share=copy)
 
 Here's a step-by-step breakdown of the code provided, which is designed to count smiley faces in a string using a queue. Each smiley face is either a `:)` or `:(`.
